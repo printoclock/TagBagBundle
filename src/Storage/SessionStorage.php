@@ -40,7 +40,7 @@ final class SessionStorage implements StorageInterface
     private function getSession(): SessionInterface
     {
         try {
-            return $this->requestStack->getSession();
+            return $this->requestStack->getMasterRequest()->getSession();
         } catch (SessionNotFoundException $e) {
             throw new StorageException($e->getMessage(), 0, $e);
         }
